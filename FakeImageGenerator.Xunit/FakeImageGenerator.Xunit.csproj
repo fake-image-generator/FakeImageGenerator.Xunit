@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+	<NuspecFile>FakeImageGenerator.Xunit.1.0.0.nuspec</NuspecFile>
+	<IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
