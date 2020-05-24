@@ -6,8 +6,8 @@ namespace FakeImageGenerator.Xunit.Test
 {
     public class TestFakeImageGeneratorDataAttribute
     {
-        [Theory]
-        [FakeImageGeneratorDataAttribute(10000000, "Png", "C:/")]
+        [IgnoreOnLinuxTheory]
+        [FakeImageGeneratorData(10000000, "Png", "C:/")]
         public void GenerateFakeImageWithOutputPathShouldBeOk(string path)
         {
             var file = new FileInfo(path);
@@ -16,8 +16,18 @@ namespace FakeImageGenerator.Xunit.Test
             Assert.Equal(".png", file.Extension);
         }
 
+        [IgnoreOnWindowsTheory]
+        [FakeImageGeneratorData(10000000, "Png", "/")]
+        public void GenerateFakeImageWithOutputPathInLinuxShouldBeOk(string path)
+        {
+            var file = new FileInfo(path);
+
+            Assert.Equal(10000000, file.Length);
+            Assert.Equal(".png", file.Extension);
+        }
+
         [Theory]
-        [FakeImageGeneratorDataAttribute(10000000, "Png")]
+        [FakeImageGeneratorData(10000000, "Png")]
         public void GenerateFakeImageWithoutOutputPathShouldBeOk(byte[] array)
         {
             Assert.Equal(10000000, array.Length);
