@@ -17,7 +17,7 @@ namespace FakeImageGenerator.Xunit.Test
         }
 
         [IgnoreOnWindowsTheory]
-        [FakeImageGeneratorData(10000000, "Png", "/")]
+        [FakeImageGeneratorData(10000000, "Png", "/home")]
         public void GenerateFakeImageWithOutputPathInLinuxShouldBeOk(string path)
         {
             var file = new FileInfo(path);
